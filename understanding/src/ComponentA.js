@@ -5,7 +5,8 @@ class ComponentA extends React.Component{
     constructor(){
         super();
         this.state= {
-            name:"ComponentA"
+            name:"ComponentA",
+            data:[]
         }
 
         console.log("ComponentA Constructor");
@@ -18,6 +19,10 @@ class ComponentA extends React.Component{
 
     componentDidMount(){
         console.log("ComponentA componentDidMount");
+        let users =fetch('https://jsonplaceholder.typicode.com/users')
+        .then((response)=>{return response.json()})
+        .then((user)=>{this.setState({data:user})});
+    
         
     }
     render(){
@@ -26,7 +31,12 @@ class ComponentA extends React.Component{
         return(
             <>
             <h1>{this.state.name}</h1>
-            <ComponentB/>
+            
+            <ul>
+            {this.state.data.map((d)=>{
+                return (<li>{d.username}</li>);
+                })}
+            </ul>
             </>
         );
     }
