@@ -1,4 +1,5 @@
 import React from "react";
+import ComponentB from "./ComponentB";
 
 class ComponentA extends React.Component{
     constructor(){
@@ -8,6 +9,7 @@ class ComponentA extends React.Component{
         }
 
         console.log("ComponentA Constructor");
+        
     }
     static getDerivedStateFromProps(){
         console.log("ComponentA getderivedstatefromprops()");
@@ -16,11 +18,16 @@ class ComponentA extends React.Component{
 
     componentDidMount(){
         console.log("ComponentA componentDidMount");
+        
     }
     render(){
+        
         console.log("ComponentA Render");
         return(
+            <>
             <h1>{this.state.name}</h1>
+            <ComponentB/>
+            </>
         );
     }
 }
