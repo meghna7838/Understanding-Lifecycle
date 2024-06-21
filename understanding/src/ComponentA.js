@@ -37,6 +37,15 @@ class ComponentA extends React.Component{
                 return (<li>{d.username}</li>);
                 })}
             </ul>
+
+            {/* <table>
+                {this.state.data.map((user)=>{
+                    return (<tr>
+                        <td>{user.id}</td>
+                        <td>{user.username}</td>
+                    </tr>)
+                })}
+            </table> */}
             </>
         );
     }
