@@ -5,17 +5,17 @@ class  App extends React.Component {
   constructor(){
     super();
     this.state =  {
-      mount : false
+      start : false
     }
   }
   handleClick=()=>{
-    this.setState((prevState)=>({ mount:!prevState.mount
+    this.setState((prevState)=>({ start:!prevState.start
     }))
   }
   render(){
     return(<>
-      <button onClick={this.handleClick}>{this.state.mount?"UNMOUNT":"MOUNT"}</button>
-      {this.state.mount?<TimerOne/>:null}
+      <button onClick={this.handleClick}>{this.state.start?"STOP":"START"}</button>
+      <TimerOne start={this.state.start}/>
       </>
     );
   }

@@ -36,7 +36,7 @@ console.log("_____________________________________________________");
 
  this.timer = setInterval(() => {
     this.setState((prevState) => ({ time: prevState.time + 1 }));
-  }, 1000);
+  }, 10000);
 }
 
 getSnapshotBeforeUpdate(prevProps, prevState)
@@ -45,9 +45,12 @@ getSnapshotBeforeUpdate(prevProps, prevState)
     return null;
 }
 
-componentDidUpdate(){
+componentDidUpdate(prevProps,prevState,snapshot){
     console.log("TimeOne componentDidUpdate");
     console.log("_____________________________________________________");
+    console.log("PrevProp",prevProps);
+    console.log("PrevState",prevState);
+    console.log("SNapshot from getSnapshotBeforeUpdate",snapshot)
     if(this.state.time==10)
         {
     clearInterval(this.timer);
