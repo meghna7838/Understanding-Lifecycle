@@ -34,9 +34,7 @@ console.log("_____________________________________________________");
 //         this.setState({time:time+1});
 //     },1000);
 
- this.timer = setInterval(() => {
-    this.setState((prevState) => ({ time: prevState.time + 1 }));
-  }, 10000);
+
 }
 
 getSnapshotBeforeUpdate(prevProps, prevState)
@@ -51,9 +49,22 @@ componentDidUpdate(prevProps,prevState,snapshot){
     console.log("PrevProp",prevProps);
     console.log("PrevState",prevState);
     console.log("SNapshot from getSnapshotBeforeUpdate",snapshot)
-    if(this.state.time==10)
+    // this.timer = setInterval(() => {
+    //     this.setState((prevState) => ({ time: prevState.time + 1 }));
+    //   }, 1000); Wrong way timer will behave weird
+
+    //Right Way
+    if(prevProps.start !== this.props.start)
         {
-    clearInterval(this.timer);
+            if(this.props.start)
+                { this.timer = setInterval(() => {
+                    this.setState((prevState) => ({ time: prevState.time + 1 }));
+                  }, 1000);
+                }
+            else{
+                clearInterval(this.timer);
+            }
+
         }
 }
 
