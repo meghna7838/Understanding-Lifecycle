@@ -1,21 +1,19 @@
 import React from "react";
 import ComponentA from "./ComponentA";
 import TimerOne from "./TimerOne"
+import ErrorBoundary from "./ErrorBoundary";
+import ComponentB from "./ComponentB";
 class  App extends React.Component {
-  constructor(){
-    super();
-    this.state =  {
-      start : false
-    }
-  }
-  handleClick=()=>{
-    this.setState((prevState)=>({ start:!prevState.start
-    }))
-  }
+  
   render(){
     return(<>
-      <button onClick={this.handleClick}>{this.state.start?"STOP":"START"}</button>
-      <TimerOne start={this.state.start}/>
+      <ErrorBoundary>
+        <ComponentA/>
+       
+      </ErrorBoundary>
+      <ErrorBoundary>
+      <ComponentB />
+      </ErrorBoundary>
       </>
     );
   }
